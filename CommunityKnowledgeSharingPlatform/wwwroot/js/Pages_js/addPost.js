@@ -64,7 +64,7 @@
                 Authorization: `Bearer ${localStorage.getItem('authToken')}`, 
             },
             success: function (response) {
-                alert('Post added successfully!');
+                toastr.success('Post added successfully!');
                 // Reset the form
                 $('#addPostForm')[0].reset();
             },
