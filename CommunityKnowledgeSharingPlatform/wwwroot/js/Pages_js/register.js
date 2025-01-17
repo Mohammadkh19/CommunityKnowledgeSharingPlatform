@@ -33,7 +33,7 @@ $(document).ready(function () {
                 confirmPassword: confirmPassword
             }),
             success: function (response) {
-                alert('Registration successful! You can now log in.');
+                localStorage.setItem('registerSuccessMessage', 'Registered successfully!')
                 localStorage.setItem('authToken', response.token); // Save token
                 window.location.href = '/index.html'; // Redirect
             },

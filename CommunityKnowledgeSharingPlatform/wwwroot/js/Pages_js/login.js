@@ -16,8 +16,8 @@
             contentType: 'application/json',
             data: JSON.stringify({ usernameOrEmail: email, password: password }),
             success: function (response) {
-                alert('Login successful!');
                 localStorage.setItem('authToken', response.token); // Save token
+                localStorage.setItem('loginSuccessMessage', 'Signed in successfully!')
                 window.location.href = '/index.html'; // Redirect
             },
             error: function (xhr) {
