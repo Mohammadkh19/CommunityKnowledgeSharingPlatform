@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-
     // Fetch categories when the page loads
     fetchCategories();
 
@@ -11,7 +10,8 @@
     $('#addPostForm').on('submit', function (e) {
         e.preventDefault();
         addPost();
-    }
+    });
+
 
 
     function fetchCategories() {
