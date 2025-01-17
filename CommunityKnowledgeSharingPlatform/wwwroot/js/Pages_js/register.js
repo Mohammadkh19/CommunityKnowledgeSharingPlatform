@@ -1,8 +1,9 @@
 ﻿
 $(document).ready(function () {
+
     // Handle form submission
     $('form').on('submit', function (e) {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault();
 
         // Collect input values
         const email = $('#inputEmail4').val();
@@ -21,9 +22,8 @@ $(document).ready(function () {
             return;
         }
 
-        // Send registration data to the backend
         $.ajax({
-            url: '/api/Auth/Register', // Your registration API endpoint
+            url: '/api/Auth/Register', 
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({

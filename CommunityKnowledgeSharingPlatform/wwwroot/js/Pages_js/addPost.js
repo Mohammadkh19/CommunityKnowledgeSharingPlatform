@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+
     // Fetch categories when the page loads
     fetchCategories();
 
@@ -7,12 +8,10 @@
     });
 
 
-    // Form submission handler
     $('#addPostForm').on('submit', function (e) {
         e.preventDefault();
         addPost();
-    });
-
+    }
 
 
     function fetchCategories() {
@@ -57,16 +56,16 @@
 
         // Make API call to add the post
         $.ajax({
-            url: '/api/Post/createPost', // Replace with your API endpoint
+            url: '/api/Post/createPost', 
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(postData),
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('authToken')}`, // Include auth token if required
+                Authorization: `Bearer ${localStorage.getItem('authToken')}`, 
             },
             success: function (response) {
                 alert('Post added successfully!');
-                // Optionally, reset the form
+                // Reset the form
                 $('#addPostForm')[0].reset();
             },
             error: function (xhr) {
