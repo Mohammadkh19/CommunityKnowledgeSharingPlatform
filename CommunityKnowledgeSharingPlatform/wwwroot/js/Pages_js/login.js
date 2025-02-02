@@ -1,4 +1,10 @@
 ﻿$(document).ready(function () {
+    const success = localStorage.getItem('success');
+    if (success) {
+        toastr.success(success);
+        localStorage.removeItem('success');
+    }
+
     $('form').on('submit', function (e) {
         e.preventDefault(); // Prevent default form submission
 

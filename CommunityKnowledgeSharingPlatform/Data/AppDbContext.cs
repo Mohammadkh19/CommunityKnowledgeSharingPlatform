@@ -11,6 +11,7 @@ public class AppDbContext : IdentityDbContext<Users>
     // DbSets for each table
     public DbSet<Posts> Posts { get; set; }
     public DbSet<Comments> Comments { get; set; }
+    public DbSet<Profiles> Profiles { get; set; }
     public DbSet<Points> Points { get; set; }
     public DbSet<Notifications> Notifications { get; set; }
     public DbSet<Votes> Votes { get; set; }
@@ -85,7 +86,7 @@ public class AppDbContext : IdentityDbContext<Users>
             entity.HasOne(n => n.Post)
                 .WithMany(p => p.Notifications)
                 .HasForeignKey(n => n.PostId)
-                .OnDelete(DeleteBehavior.Restrict); // Use Restrict to avoid cascading paths
+                .OnDelete(DeleteBehavior.Cascade); // Use Restrict to avoid cascading paths
         });
 
 
@@ -108,5 +109,15 @@ public class AppDbContext : IdentityDbContext<Users>
             entity.HasKey(c => c.CategoryId);
             entity.HasIndex(c => c.CategoryName).IsUnique();
         });
+
+        modelBuilder.Entity<Profiles>(entity =>
+        {
+            entity.HasKey(p => p.ProfileId);
+
+            entity.HasOne(p => p.User)
+                  .WithOne(u => u.Profile)
+                  .HasForeignKey<Profiles>(p => p.UserId);
+        });
+
     }
 }

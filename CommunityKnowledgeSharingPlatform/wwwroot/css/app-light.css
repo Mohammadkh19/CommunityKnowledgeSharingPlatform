@@ -2365,7 +2365,7 @@ input[type="button"].btn-block {
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #212529;
+  color: #212529 !important;
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
@@ -3267,6 +3267,10 @@ input[type="button"].btn-block {
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
   color: #ffffff; }
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: #1b68ff !important;
+}
 
 .navbar-dark .navbar-toggler {
   color: rgba(255, 255, 255, 0.5);
@@ -12041,4 +12045,351 @@ a.uppy-Dashboard-poweredBy {
   .uppy-Dashboard-close {
     font-size: 35px;
     top: -10px;
-    right: -35px; } }
+    right: -35px; } 
+
+}
+
+
+
+    .profile-img-wrap {
+        height: 120px;
+        position: absolute;
+        width: 120px;
+        background: #fff;
+        overflow: hidden;
+    }
+
+
+        .profile-img-wrap img {
+            width: 120px;
+            height: 120px;
+        }
+
+@media only screen and (max-width: 575.98px) {
+    .profile-img-wrap {
+        position: relative !important;
+        margin: 0 auto;
+    }
+}
+
+    .fileupload.btn {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background: rgba(33, 33, 33, 0.5);
+        border-radius: 0;
+        padding: 3px 10px;
+        border: none;
+    }
+
+    .fileupload input.upload {
+        cursor: pointer;
+        filter: alpha(opacity=0);
+        font-size: 20px;
+        margin: 0;
+        opacity: 0;
+        padding: 0;
+        position: absolute;
+        right: -3px;
+        top: -3px;
+        padding: 5px;
+    }
+
+    .btn-text {
+        color: #fff;
+    }
+
+
+h6.btn {
+    font-weight: 500;
+    color: #001a4e;
+}
+
+.btn.badge:hover {
+    color: #001a4e;
+}
+
+
+.pagination {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+.block-27 ul {
+    padding: 0;
+    margin: 0;
+}
+
+    .block-27 ul li {
+        display: inline-block;
+        margin-bottom: 4px;
+        font-weight: 400;
+    }
+
+        .block-27 ul li a:hover {
+            text-decoration: none !important;
+            background-color: #ccc;
+        }
+
+        .block-27 ul li a, .block-27 ul li span {
+            color: gray;
+            text-align: center;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            border: 1px solid #e6e6e6;
+        }
+
+        .block-27 ul li.active a, .block-27 ul li.active span {
+            background: #001a4e;
+            color: #fff;
+            border: 1px solid transparent;
+        }
+
+
+.post-title-link {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits the color from the parent element */
+}
+
+    .post-title-link:hover {
+        text-decoration: none; /* Ensure underline is not applied on hover */
+        color: inherit; /* Maintain the same color on hover */
+    }
+
+
+
+#dynamicTextarea {
+    overflow: hidden; /* Prevent scrollbars */
+    resize: none; /* Disable manual resizing */
+}
+
+/* Wrapper for the comment box */
+.comment-box {
+    position: relative;
+    width: 100%;
+}
+
+/* Textarea styling */
+.comment-input {
+    width: 100%;
+    padding-right: 50px; /* Reserve space for the Send button */
+    resize: none; /* Disable manual resizing */
+    overflow: hidden; /* Prevent scrollbars */
+    border-radius: 20px; /* Rounded corners for Facebook-like appearance */
+    line-height: 1.5; /* Adjust line height for readability */
+}
+
+/* Send button styling */
+.send-btn {
+    position: absolute;
+    right: 12px; /* Align to the right inside the textarea */
+    bottom: 4px; /* Align to the bottom inside the textarea */
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+}
+
+/* Send button styling */
+.edit-send-btn {
+    position: absolute;
+    right: 12px; /* Align to the right inside the textarea */
+    bottom: 8px; /* Align to the bottom inside the textarea */
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+}
+
+    .send-btn:hover {
+        color: #0056b3;
+    }
+
+    .send-btn:focus {
+        outline: none;
+    }
+
+
+.edit-send-btn:disabled, .send-btn:disabled {
+    color: grey;
+    border-color: grey;
+    cursor: not-allowed; /* Show not-allowed cursor */
+    opacity: 0.6; /* Add slight transparency */
+}
+
+.description {
+    color: #6c757d !important;
+}
+
+    .description * {
+        color: inherit !important; /* Enforce the default color but preserve other styles */
+    }
+
+
+.media-body {
+    border-radius: 10px;
+}
+
+@media (min-width: 0) {
+    .g-mr-15
+
+{
+    margin-right: 1.07143rem !important;
+}
+
+}
+
+@media (min-width: 0) {
+    .g-mt-3 {
+        margin-top: 0.21429rem !important;
+    }
+}
+
+.g-height-50 {
+    height: 50px;
+}
+
+.g-width-50 {
+    width: 50px !important;
+}
+
+@media (min-width: 0) {
+    .g-pa-30 {
+        padding: 1.94286rem !important;
+    }
+}
+
+.g-bg-secondary {
+    background-color: white !important;
+}
+
+.u-shadow-v18 {
+    box-shadow: 0 5px 10px -6px rgba(0, 0, 0, 0.15);
+}
+
+.g-color-gray-dark-v4 {
+    color: #777 !important;
+}
+
+.g-font-size-12 {
+    font-size: 0.85714rem !important;
+}
+
+.media-comment {
+    margin-top: 20px
+}
+
+
+/*==================================================
+        Post Contents CSS
+==================================================*/
+
+.post-content {
+    background: #f6f6f6;
+    border-radius: 4px;
+    width: 100%;
+    border: 1px solid #f1f2f2;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+    .post-content img.post-image, video.post-video, .google-maps {
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content .google-maps .map {
+        height: 300px;
+    }
+
+    .post-content .post-container {
+        padding: 20px;
+    }
+
+        .post-content .post-container .post-detail {
+            margin-left: 65px;
+            position: relative;
+        }
+
+            .post-content .post-container .post-detail .post-text {
+                line-height: 24px;
+                margin: 0;
+            }
+
+            .post-content .post-container .post-detail .reaction {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .post-content .post-container .post-detail .post-comment {
+                display: inline-flex;
+                margin: 10px auto;
+                width: 100%;
+            }
+
+                .post-content .post-container .post-detail .post-comment img.profile-photo-sm {
+                    margin-right: 10px;
+                }
+
+                .post-content .post-container .post-detail .post-comment .form-control {
+                    height: 30px;
+                    border: 1px solid #ccc;
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                    margin: 7px 0;
+                    min-width: 0;
+                }
+
+img.profile-photo-md {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+img.profile-photo-sm {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.copy-text {
+    color: black;
+}
+
+    .copy-text:hover {
+        color: #888;
+    }
+
+
+.category-item {
+    padding: 8px 14px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #555;
+    border-radius: 20px;
+    transition: color 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
+    border-bottom: 2px solid transparent; /* Default no underline */
+}
+
+    .category-item:hover {
+        color: #000; /* Slightly darker on hover */
+        transform: scale(1.05);
+    }
+
+.active-category {
+    border-bottom: 2px solid #007bff !important; /* Blue underline */
+    color: #007bff !important; /* Make active item stand out */
+}

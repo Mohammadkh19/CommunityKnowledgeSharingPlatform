@@ -27,6 +27,9 @@ builder.Services.AddIdentity<Users, IdentityRole>(
             options.Password.RequiredUniqueChars = 0;
             options.Password.RequireNonAlphanumeric = false;
             options.User.RequireUniqueEmail = true;
+            options.Password.RequireDigit = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequireUppercase = true;
         })
     .AddEntityFrameworkStores<AppDbContext>()
     .AddRoles<IdentityRole>();
@@ -59,6 +62,7 @@ builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<IVoteService, VoteService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
 
 
 //Add Authentication to Swagger UI
@@ -95,11 +99,40 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Users>>();
+
     var roles = new[] { "User", "Admin" };
 
     foreach (var role in roles)
         if (!await roleManager.RoleExistsAsync(role))
             await roleManager.CreateAsync(new IdentityRole(role));
+
+    var adminEmail = "admin@example.com";
+    var adminPassword = builder.Configuration["AdminPassword"] ?? "Admin@123";
+
+    var adminUser = await userManager.FindByEmailAsync(adminEmail);
+    if (adminUser == null)
+    {
+        adminUser = new Users
+        {
+            UserName = adminEmail,
+            Email = adminEmail,
+            EmailConfirmed = true
+        };
+
+        var result = await userManager.CreateAsync(adminUser, adminPassword);
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(adminUser, "Admin");
+        }
+        else
+        {
+            foreach (var error in result.Errors)
+            {
+                Console.WriteLine($"Error: {error.Description}");
+            }
+        }
+    }
 }
 
 
@@ -107,7 +140,7 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.MapGet("/", () => Results.Redirect("/auth-login.html"));
+app.MapGet("/", () => Results.Redirect("/index.html"));
 
 app.UseAuthorization();
 

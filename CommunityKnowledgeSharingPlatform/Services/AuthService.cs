@@ -100,7 +100,7 @@ namespace CommunityKnowledgeSharingPlatform.Services
             if (!result.Succeeded)
             {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-                return (false, $"Password change failed: {errors}");
+                return (false, $"{errors}");
             }
 
             return (true, "Password changed successfully.");
@@ -127,5 +127,51 @@ namespace CommunityKnowledgeSharingPlatform.Services
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+
+        public async Task<(bool Success, string UserName, string Email, string Message)> GetUserDetailsAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return (false, null, null, "User not found.");
+            }
+
+            return (true, user.UserName, user.Email, "User details retrieved successfully.");
+        }
+
+        public async Task<(bool Success, string Message)> UpdateUserDetailsAsync(string userId, string newUsername, string newEmail)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return (false, "User not found.");
+            }
+
+            // Update the username if it has changed
+            if (!string.IsNullOrEmpty(newUsername) && user.UserName != newUsername)
+            {
+                var usernameResult = await _userManager.SetUserNameAsync(user, newUsername);
+                if (!usernameResult.Succeeded)
+                {
+                    var errors = string.Join(", ", usernameResult.Errors.Select(e => e.Description));
+                    return (false, $"Failed to update username: {errors}");
+                }
+            }
+
+            // Update the email if it has changed
+            if (!string.IsNullOrEmpty(newEmail) && user.Email != newEmail)
+            {
+                var emailResult = await _userManager.SetEmailAsync(user, newEmail);
+                if (!emailResult.Succeeded)
+                {
+                    var errors = string.Join(", ", emailResult.Errors.Select(e => e.Description));
+                    return (false, $"Failed to update email: {errors}");
+                }
+            }
+
+            return (true, "User details updated successfully.");
+        }
+
     }
 }

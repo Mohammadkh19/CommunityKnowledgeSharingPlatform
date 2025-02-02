@@ -12044,3 +12044,340 @@ a.uppy-Dashboard-poweredBy {
     font-size: 35px;
     top: -10px;
     right: -35px; } }
+
+
+/*.media {
+    border-radius: 10px;
+    margin-left: 10px;
+    background-color: #343a40 !important;
+    color: #e0e0e0 !important;*/ /* Light text */
+    /*border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6) !important;
+}*/
+
+.media-body {
+    margin-left: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6) !important;
+}
+
+
+.g-bg-secondary {
+    background-color: #343a40 !important; /*#1e1e1e*/
+}
+
+/* Post title link */
+.post-title-link {
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+    .post-title-link:hover {
+        color: #4a90e2 !important;
+    }
+
+/* Post metadata (date, time, etc.) */
+.g-color-gray-dark-v4 {
+    color: #b3b3b3 !important;
+}
+
+/* Post description */
+.description {
+    color: #d6d6d6 !important;
+}
+
+
+/* Like, Dislike, Share buttons */
+.action-icon,
+.like-button,
+.dislike-button,
+.share-button {
+    color: #e0e0e0 !important;
+}
+
+    /* Ensure liked/disliked colors remain visible */
+    .like-button.text-primary {
+        color: #4a90e2 !important;
+    }
+
+    .dislike-button.text-danger {
+        color: #e74c3c !important;
+    }
+
+
+
+/* Dropdown menu (Edit/Delete options) */
+.dropdown-menu {
+    background-color: #252525 !important;
+    border: 1px solid #343a40 !important;
+}
+
+    .dropdown-menu .dropdown-item {
+        color: #e0e0e0 !important;
+    }
+
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #3a3a3a !important;
+            color: #ffffff !important;
+        }
+
+
+
+
+
+@media (min-width: 0) {
+    .g-mt-3 {
+        margin-top: 0.21429rem !important;
+    }
+}
+
+.g-height-50 {
+    height: 50px;
+}
+
+.g-width-50 {
+    width: 50px !important;
+}
+
+@media (min-width: 0) {
+    .g-pa-30 {
+        padding: 1.94286rem !important;
+    }
+}
+
+
+.u-shadow-v18 {
+    box-shadow: 0 5px 10px -6px rgba(0, 0, 0, 0.15);
+}
+
+.g-color-gray-dark-v4 {
+    color: white !important;
+}
+
+.g-font-size-12 {
+    font-size: 0.85714rem !important;
+}
+
+.media-comment {
+    margin-top: 20px
+}
+
+/* Pagination Container */
+.block-27 ul {
+    padding: 0;
+    margin: 0;
+}
+
+    /* List Items */
+    .block-27 ul li {
+        display: inline-block;
+        margin-bottom: 4px;
+        font-weight: 400;
+    }
+
+        /* Pagination links */
+        .block-27 ul li a,
+        .block-27 ul li span {
+            color: #d6d6d6 !important; /* Light gray for better readability */
+            text-align: center;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            border: 1px solid #444; /* Darker border for contrast */
+            background-color: #222; /* Dark background */
+            transition: all 0.3s ease;
+        }
+
+            /* Hover effect */
+            .block-27 ul li a:hover {
+                text-decoration: none !important;
+                background-color: #333 !important; /* Slightly lighter dark background */
+                color: #ffffff !important;
+            }
+
+        /* Active page */
+        .block-27 ul li.active a,
+        .block-27 ul li.active span {
+            background: #4a90e2 !important; /* Highlighted color (adjust as needed) */
+            color: #fff !important;
+            border: 1px solid transparent;
+        }
+
+
+
+/*==================================================
+        Post Contents CSS
+==================================================*/
+
+.post-content {
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+    .post-content img.post-image, video.post-video, .google-maps {
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content .google-maps .map {
+        height: 300px;
+    }
+
+    .post-content .post-container {
+        padding: 20px;
+    }
+
+        .post-content .post-container .post-detail {
+            margin-left: 65px;
+            position: relative;
+        }
+
+            .post-content .post-container .post-detail .post-text {
+                line-height: 24px;
+                margin: 0;
+            }
+
+            .post-content .post-container .post-detail .reaction {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .post-content .post-container .post-detail .post-comment {
+                display: inline-flex;
+                margin: 10px auto;
+                width: 100%;
+            }
+
+                .post-content .post-container .post-detail .post-comment img.profile-photo-sm {
+                    margin-right: 10px;
+                }
+
+                .post-content .post-container .post-detail .post-comment .form-control {
+                    height: 30px;
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                    margin: 7px 0;
+                    min-width: 0;
+                }
+
+img.profile-photo-md {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+img.profile-photo-sm {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.post-content {
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+    border: none !important;
+}
+
+#dynamicTextarea {
+    overflow: hidden; /* Prevent scrollbars */
+    resize: none; /* Disable manual resizing */
+}
+
+/* Wrapper for the comment box */
+.comment-box {
+    position: relative;
+    width: 100%;
+}
+
+/* Textarea styling */
+.comment-input {
+    width: 100%;
+    padding-right: 50px; /* Reserve space for the Send button */
+    resize: none; /* Disable manual resizing */
+    overflow: hidden; /* Prevent scrollbars */
+    border-radius: 20px; 
+    line-height: 1.5; /* Adjust line height for readability */
+}
+
+    .comment-input::placeholder {
+        color: #ffffff; /* White placeholder text */
+        opacity: 0.6; /* Slight transparency for better UX */
+    }
+
+/* Send button styling */
+.send-btn {
+    position: absolute;
+    right: 12px; /* Align to the right inside the textarea */
+    bottom: 4px; /* Align to the bottom inside the textarea */
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+}
+
+/* Send button styling */
+.edit-send-btn {
+    position: absolute;
+    right: 12px; /* Align to the right inside the textarea */
+    bottom: 8px; /* Align to the bottom inside the textarea */
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+}
+
+.send-btn:hover {
+    color: #0056b3;
+}
+
+.send-btn:focus {
+    outline: none;
+}
+
+
+.edit-send-btn:disabled, .send-btn:disabled {
+    color: grey;
+    border-color: grey;
+    cursor: not-allowed; /* Show not-allowed cursor */
+    opacity: 0.6; /* Add slight transparency */
+}
+
+.copy-text{
+    color: white;
+}
+
+    .copy-text:hover {
+        color: #333;
+    }
+
+.category-item {
+    padding: 8px 14px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    color: lightgrey;
+    border-radius: 20px;
+    transition: color 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
+    border-bottom: 2px solid transparent; /* Default no underline */
+}
+
+    .category-item:hover {
+        color: white; /* Slightly lighter on hover */
+        transform: scale(1.05);
+    }
+
+.active-category {
+    border-bottom: 2px solid #4a90e2 !important; /* Blue underline */
+    color: #4a90e2 !important; /* Make active item stand out */
+}
+
+
+

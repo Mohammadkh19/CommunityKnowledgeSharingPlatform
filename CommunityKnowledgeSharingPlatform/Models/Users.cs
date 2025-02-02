@@ -4,8 +4,9 @@ namespace CommunityKnowledgeSharingPlatform.Models
 {
     public class Users : IdentityUser
     {
-        
+
         // Navigation properties
+        public Profiles Profile { get; set; }
         public ICollection<Posts> Posts { get; set; }
         public ICollection<Comments> Comments { get; set; }
         public ICollection<Points> Points { get; set; }

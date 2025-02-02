@@ -18,7 +18,7 @@ namespace CommunityKnowledgeSharingPlatform.Services
             _notificationService = notificationService;
         }
 
-        public async Task<(bool Success, string Message)> AddCommentAsync(CommentDTO commentDto, string userId)
+        public async Task<(bool Success, string Message, object? Data)> AddCommentAsync(CommentDTO commentDto, string userId)
         {
             try
             {
@@ -26,8 +26,18 @@ namespace CommunityKnowledgeSharingPlatform.Services
 
                 if (post == null)
                 {
-                    return (false, "Post not found");
+                    return (false, "Post not found", null);
                 }
+
+                var user = await _context.Users
+                    .Include(u => u.Profile)
+                    .FirstOrDefaultAsync(u => u.Id == userId);
+
+                if (user == null)
+                {
+                    return (false, "User not found.", null);
+                }
+
 
                 var comment = new Comments
                 {
@@ -54,12 +64,20 @@ namespace CommunityKnowledgeSharingPlatform.Services
 
                 await _context.SaveChangesAsync();
 
+                var response = new
+                {
+                    CommentId = comment.CommentId,
+                    Username = user.UserName,
+                    CommentText = comment.CommentText,
+                    ProfilePicturePath = user.Profile.ProfilePicturePath,
+                    CommentDate = comment.CommentDate
+                };
 
-                return (true, "Comment added successfully");
+                return (true, "Comment added successfully", response);
             }
             catch (Exception ex)
             {
-                return (false, $"An error occurred: {ex.Message}");
+                return (false, $"An error occurred: {ex.Message}", null);
             }
         }
 

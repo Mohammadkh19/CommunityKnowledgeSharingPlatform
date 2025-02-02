@@ -26,13 +26,13 @@ namespace CommunityKnowledgeSharingPlatform.Controllers
             // Get the UserId of the current authorized user
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var (success, message) = await _commentService.AddCommentAsync(commentDto, userId);
+            var (success, message, data) = await _commentService.AddCommentAsync(commentDto, userId);
 
             if (!success)
             {
-                return BadRequest(new { message });
+                return BadRequest(new { Message = message });
             }
-            return Ok(new { message });
+            return Ok(new { Message = message, Comment = data });
         }
 
         [HttpPut("editComment")]

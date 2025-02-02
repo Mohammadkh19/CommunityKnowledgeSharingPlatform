@@ -1,4 +1,18 @@
 ﻿$(document).ready(function () {
+    // Get postId from query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('postId');
+
+    if (postId) {
+        // If postId exists, fetch the post details
+        fetchPostDetails(postId);
+        $('.page-title').text("Update Post")
+    }
+    else {
+        $('.page-title').text("Add Post")
+    }
+
+
     // Fetch categories when the page loads
     fetchCategories();
 
@@ -32,45 +46,65 @@
         });
     }
 
-    function validateForm() {
-        const title = $('#title').val();
-        const categoryId = $('#category').val();
-        const description = $('#description').val();
-
-        if (!title || !categoryId || !description) {
-            alert('All fields are required.');
-            return false;
-        }
-        return true;
-    }
-
-
     function addPost() {
-        if (!validateForm()) return;
 
         const postData = {
+            postId : postId ? postId : 0,
             postTitle: $('#title').val(),
             categoryId: $('#category').val(),
-            postDescription: $('#description').val(),
+            postDescription: window.quill.root.innerHTML,
         };
+
+        const url = postId
+            ? `/api/Post/editPost/` // Update API for editing a post
+            : '/api/Post/createPost'; // Create API for adding a new post
+
+        const method = postId ? 'PUT' : 'POST';
 
         // Make API call to add the post
         $.ajax({
-            url: '/api/Post/createPost', 
-            method: 'POST',
+            url: url, 
+            method: method,
             contentType: 'application/json',
             data: JSON.stringify(postData),
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('authToken')}`, 
             },
             success: function (response) {
-                toastr.success('Post added successfully!');
+                toastr.success(postId ? 'Post updated successfully!' : 'Post added successfully!');
                 // Reset the form
-                $('#addPostForm')[0].reset();
+                if (!postId) {
+                    $('#addPostForm')[0].reset();
+                    window.quill.root.innerHTML = '';
+                }
             },
             error: function (xhr) {
                 alert(xhr.responseJSON?.message || 'Failed to add post. Please try again.');
             },
         });
     }
+
+
+    // Function to fetch post details
+    function fetchPostDetails(postId) {
+        $.ajax({
+            url: `/api/Post/getPosts/${postId}`, // Backend API to fetch post details
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            },
+            success: function (response) {
+                // Populate the form with the post data
+
+                $('#title').val(response.postTitle);
+                $('#category').val(response.categoryId).change(); // Set the category dropdown
+                window.quill.clipboard.dangerouslyPasteHTML(response.postDescription);
+            },
+            error: function () {
+                alert('Failed to fetch post details. Please try again.');
+            },
+        });
+    }
+
+
 });

@@ -170,6 +170,41 @@ namespace CommunityKnowledgeSharingPlatform.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("CommunityKnowledgeSharingPlatform.Models.Profiles", b =>
+                {
+                    b.Property<int>("ProfileId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProfileId"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Bio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProfilePicturePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ProfileId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Profiles");
+                });
+
             modelBuilder.Entity("CommunityKnowledgeSharingPlatform.Models.Users", b =>
                 {
                     b.Property<string>("Id")
@@ -391,7 +426,7 @@ namespace CommunityKnowledgeSharingPlatform.Migrations
                     b.HasOne("CommunityKnowledgeSharingPlatform.Models.Posts", "Post")
                         .WithMany("Notifications")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CommunityKnowledgeSharingPlatform.Models.Users", "User")
@@ -431,6 +466,17 @@ namespace CommunityKnowledgeSharingPlatform.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CommunityKnowledgeSharingPlatform.Models.Profiles", b =>
+                {
+                    b.HasOne("CommunityKnowledgeSharingPlatform.Models.Users", "User")
+                        .WithOne("Profile")
+                        .HasForeignKey("CommunityKnowledgeSharingPlatform.Models.Profiles", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -528,6 +574,9 @@ namespace CommunityKnowledgeSharingPlatform.Migrations
                     b.Navigation("Points");
 
                     b.Navigation("Posts");
+
+                    b.Navigation("Profile")
+                        .IsRequired();
 
                     b.Navigation("Votes");
                 });
