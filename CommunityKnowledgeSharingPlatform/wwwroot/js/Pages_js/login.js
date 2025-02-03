@@ -12,7 +12,7 @@
         const password = $('#inputPassword').val();
 
         if (!email || !password) {
-            alert('Email and password are required!');
+            toastr.warning('Email and password are required!');
             return;
         }
 
@@ -27,7 +27,7 @@
                 window.location.href = '/index.html'; // Redirect
             },
             error: function (xhr) {
-                alert(xhr.responseJSON?.message || 'Login failed. Please try again.');
+                toastr.error(xhr.responseJSON?.message || 'Login failed. Please try again.');
             },
         });
     });
