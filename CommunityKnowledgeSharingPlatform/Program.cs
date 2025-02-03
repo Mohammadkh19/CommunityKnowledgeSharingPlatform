@@ -17,7 +17,8 @@ var connectionString = builder.Configuration.GetConnectionString("db");
 
 // Add DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseNpgsql(connectionString));
+
 
 //identity
 builder.Services.AddIdentity<Users, IdentityRole>(
