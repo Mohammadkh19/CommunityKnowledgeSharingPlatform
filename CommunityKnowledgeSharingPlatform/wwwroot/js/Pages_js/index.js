@@ -40,7 +40,6 @@
         method: 'GET',
         dataType: 'json', // Expect JSON response
         success: function (response) {
-            console.log(response.categories);
             renderCategories(response.categories);
         },
         error: function () {
@@ -144,7 +143,8 @@
 
         // Copy the URL to the clipboard
         navigator.clipboard.writeText(shareUrl).then(() => {
-            alert('Link copied to clipboard!');
+            toastr.info("Link copied to clipboard!");
+            $('#shareModal').modal('hide');
         }).catch(err => {
             console.error('Failed to copy link: ', err);
         });
@@ -166,7 +166,6 @@ function fetchPosts(search = null, username = null , categoryId = null,currentPa
     if (search !== null) currentSearch = search;
     if (categoryId !== null) currentCategoryId = categoryId;
     if (username !== null) currenUsername = username;
-    console.log(currenUsername)
 
     // Build query parameters
     const params = {

@@ -33,11 +33,20 @@ function loadNotifications() {
 }
 
 // Function to render notifications inside the modal
-function renderNotifications(notifications) {
+function renderNotifications(data) {
+    const notifDot = $("#notif-dot"); 
+
+    if (data.hasUnread) {
+        notifDot.css("display", "inline-block"); 
+    } else {
+        notifDot.css("display", "none"); 
+    }
+
+
     const notificationsContainer = $('.modal-body .list-group'); // Target the list group in the modal
     notificationsContainer.empty(); // Clear old notifications
 
-    if (notifications.length === 0) {
+    if (data.length === 0) {
         notificationsContainer.append(`
             <div class="list-group-item text-center text-muted">
                 No new notifications
@@ -46,7 +55,7 @@ function renderNotifications(notifications) {
         return;
     }
 
-    notifications.forEach(notification => {
+    data.notifications.forEach(notification => {
         if (!notification.isRead) {  // Only show unread notifications
             notificationsContainer.append(`
                 <div class="list-group-item bg-transparent notification-item" data-id="${notification.notificationId}">
@@ -55,7 +64,7 @@ function renderNotifications(notifications) {
                             <span class="fe fe-bell fe-24"></span>
                         </div>
                         <div class="col">
-                            <small><strong>${notification.notificationText}</strong></small>
+                            <small><strong>${notification.content}</strong></small>
                             <div class="my-0 text-muted small">${new Date(notification.notificationDate).toLocaleString()}</div>
                             <small class="badge badge-pill badge-light text-muted">Unread</small>
                         </div>
@@ -83,6 +92,7 @@ function markNotificationAsRead(notificationId, element) {
             element.fadeOut(300, function () {
                 $(this).remove(); // Remove the notification from the list
             });
+            loadNotifications();
         },
         error: function (error) {
             console.error("Error marking notification as read:", error);

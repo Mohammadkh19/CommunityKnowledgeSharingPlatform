@@ -36,9 +36,14 @@
             },
             data: JSON.stringify(formData), // Convert formData to JSON
             success: function (response) {
-                localStorage.setItem('success', 'Updated successfully! Please login again')
-                localStorage.removeItem('authToken');
-                window.location.href = '/auth-login.html';
+                if (response == "No changes were made.") {
+                    toastr.warning(response);
+                }
+                else {
+                    localStorage.setItem('success', 'Updated successfully! Please login again')
+                    localStorage.removeItem('authToken');
+                    window.location.href = '/auth-login.html';
+                }
             },
             error: function (xhr, status, error) {
                 toastr.error("Error updating user details: " + xhr.responseText);

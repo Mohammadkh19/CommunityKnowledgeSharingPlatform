@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-    <title>Tiny Dashboard - A Bootstrap Dashboard Template</title>
+    <link rel="icon" href="assets/images/icon.webp">
+    <title>Communa</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="css/simplebar.css">
     <!-- Fonts CSS -->
@@ -40,7 +40,7 @@
                 <li class="nav-item nav-notif">
                     <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
                         <span class="fe fe-bell fe-16"></span>
-                        <span class="dot dot-md bg-success"></span>
+                        <span class="dot dot-md bg-success" id="notif-dot" style="display: none;"></span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -120,15 +120,16 @@
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-12 col-xl-10">
-                        <div class="row align-items-center my-4">
-                            <div class="col">
-                                <h2 class="h3 mb-0 page-title"></h2>
-                            </div>
-                            <div class="col-auto">
-                                <button type="button" class="btn btn-primary new-post">Save Post</button>
-                            </div>
-                        </div>
                         <form id="addPostForm">
+                            <div class="row align-items-center my-4">
+                                <div class="col">
+                                    <h2 class="h3 mb-0 page-title"></h2>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="submit" class="btn btn-primary" value="Save Post">
+                                </div>
+                            </div>
+
                             <hr class="my-4">
                             <h5 class="mb-2 mt-4">Post Information</h5>
                             <p class="mb-4">Fill your post info</p>
@@ -157,7 +158,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
                         </form>
                     </div> <!-- .col-12 -->
                 </div> <!-- .row -->
@@ -173,54 +174,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="list-group list-group-flush my-n3">
-                                <div class="list-group-item bg-transparent">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <span class="fe fe-box fe-24"></span>
-                                        </div>
-                                        <div class="col">
-                                            <small><strong>Package has uploaded successfull</strong></small>
-                                            <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                                            <small class="badge badge-pill badge-light text-muted">1m ago</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-group-item bg-transparent">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <span class="fe fe-download fe-24"></span>
-                                        </div>
-                                        <div class="col">
-                                            <small><strong>Widgets are updated successfull</strong></small>
-                                            <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
-                                            <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-group-item bg-transparent">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <span class="fe fe-inbox fe-24"></span>
-                                        </div>
-                                        <div class="col">
-                                            <small><strong>Notifications have been sent</strong></small>
-                                            <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                                            <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                                        </div>
-                                    </div> <!-- / .row -->
-                                </div>
-                                <div class="list-group-item bg-transparent">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <span class="fe fe-link fe-24"></span>
-                                        </div>
-                                        <div class="col">
-                                            <small><strong>Link was attached to menu</strong></small>
-                                            <div class="my-0 text-muted small">New layout has been attached to the menu</div>
-                                            <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                                        </div>
-                                    </div>
-                                </div> <!-- / .row -->
+                                
                             </div> <!-- / .list-group -->
                         </div>
                         <div class="modal-footer">
@@ -229,62 +183,8 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body px-5">
-                            <div class="row align-items-center">
-                                <div class="col-6 text-center">
-                                    <div class="squircle bg-success justify-content-center">
-                                        <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                                    </div>
-                                    <p>Control area</p>
-                                </div>
-                                <div class="col-6 text-center">
-                                    <div class="squircle bg-primary justify-content-center">
-                                        <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                                    </div>
-                                    <p>Activity</p>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-6 text-center">
-                                    <div class="squircle bg-primary justify-content-center">
-                                        <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                                    </div>
-                                    <p>Droplet</p>
-                                </div>
-                                <div class="col-6 text-center">
-                                    <div class="squircle bg-primary justify-content-center">
-                                        <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                                    </div>
-                                    <p>Upload</p>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-6 text-center">
-                                    <div class="squircle bg-primary justify-content-center">
-                                        <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                                    </div>
-                                    <p>Users</p>
-                                </div>
-                                <div class="col-6 text-center">
-                                    <div class="squircle bg-primary justify-content-center">
-                                        <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                                    </div>
-                                    <p>Settings</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
         </main> <!-- main -->
     </div> <!-- .wrapper -->
     <script src="js/jquery.min.js"></script>

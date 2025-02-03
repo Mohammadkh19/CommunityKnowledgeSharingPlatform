@@ -148,6 +148,8 @@ namespace CommunityKnowledgeSharingPlatform.Services
                 return (false, "User not found.");
             }
 
+            bool isUpdated = false;
+
             // Update the username if it has changed
             if (!string.IsNullOrEmpty(newUsername) && user.UserName != newUsername)
             {
@@ -157,6 +159,7 @@ namespace CommunityKnowledgeSharingPlatform.Services
                     var errors = string.Join(", ", usernameResult.Errors.Select(e => e.Description));
                     return (false, $"Failed to update username: {errors}");
                 }
+                isUpdated = true;
             }
 
             // Update the email if it has changed
@@ -168,10 +171,18 @@ namespace CommunityKnowledgeSharingPlatform.Services
                     var errors = string.Join(", ", emailResult.Errors.Select(e => e.Description));
                     return (false, $"Failed to update email: {errors}");
                 }
+                isUpdated = true;
+            }
+
+            // If no updates were made, return a message
+            if (!isUpdated)
+            {
+                return (true, "No changes were made.");
             }
 
             return (true, "User details updated successfully.");
         }
+
 
     }
 }

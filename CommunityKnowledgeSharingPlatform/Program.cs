@@ -63,6 +63,10 @@ builder.Services.AddScoped<IVoteService, VoteService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
+builder.Services.AddSingleton<EmailService>();
+builder.Services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
+builder.Services.AddHostedService<EmailBackgroundService>();
+
 
 
 //Add Authentication to Swagger UI

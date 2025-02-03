@@ -377,7 +377,7 @@ function postComment(postId, content) {
             $("#commentText").css("height", "");
             $("#postComment").prop("disabled", true);
 
-            // Optionally, append the new comment to the comments container
+            // Append the new comment to the comments container
             const newCommentHTML = `
                 <div id="comment-${response.comment.commentId}" class="post-comment d-flex align-items-center">
                    <div class="d-flex align-items-center flex-grow-1">
