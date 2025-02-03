@@ -11,7 +11,9 @@ $(document).ready(function () {
         },
         success: function (data) {
             if (data) {
-                $avatar.attr('src', data.profilePicturePath || './assets/avatars/default.png');
+                $avatar.attr('src', data.profilePicturePath || './assets/avatars/default.jpg');
+            } else {
+                $avatar.attr('src', './assets/avatars/default.jpg');
             }
         },
         error: function (xhr, status, error) {

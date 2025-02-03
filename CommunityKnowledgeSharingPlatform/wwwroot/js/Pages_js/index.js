@@ -215,7 +215,7 @@ function renderPosts(posts) {
       <a href="profile-view.html?username=${post.userName}">
     <img
         class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
-        src="${post.profilePicture}" 
+        src="${post.profilePicture || './assets/avatars/default.jpg'}" 
         alt="Image Description">
 </a>
 

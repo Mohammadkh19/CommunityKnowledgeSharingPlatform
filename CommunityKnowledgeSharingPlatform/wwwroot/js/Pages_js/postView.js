@@ -222,7 +222,7 @@ function populatePostDetails(postData) {
     $('.post-text p').html(postData.postDescription);
 
     // Update profile picture
-    $('.profile-photo-md').attr('src', postData.profilePicturePath);
+    $('.profile-photo-md').attr('src', postData.profilePicturePath || './assets/avatars/default.jpg');
 
     // Update reaction counts
     $('.reaction .like').html(`<i class="fa fa-thumbs-up like-button ${postData.isLiked ? 'text-primary' : ''}"></i><span class="like-count">${postData.upvoteCount} </span>`);
@@ -235,7 +235,7 @@ function populatePostDetails(postData) {
         const commentHTML = `
         <div id="comment-${comment.commentId}" class="post-comment d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center w-100">
-                <img src="${comment.profilePicturePath}" alt="" class="profile-photo-sm">
+                <img src="${comment.profilePicturePath || './assets/avatars/default.jpg'}" alt="" class="profile-photo-sm">
                 <a href="#" class="profile-link mr-2">${comment.username}</a>
                 <span class="comment-text"> ${comment.text}</span>
             </div>
@@ -381,7 +381,8 @@ function postComment(postId, content) {
             const newCommentHTML = `
                 <div id="comment-${response.comment.commentId}" class="post-comment d-flex align-items-center">
                    <div class="d-flex align-items-center flex-grow-1">
-                      <img src="${response.comment.profilePicturePath}" alt="" class="profile-photo-sm">
+                      <img src="${response.comment.profilePicturePath ? response.comment.profilePicturePath : './assets/avatars/default.jpg'}" alt="" class="profile-photo-sm">
+
                       <a href="#" class="profile-link mr-2">${response.comment.username}</a>
                       <span class="comment-text"> ${response.comment.commentText}</span>
                    </div>
@@ -405,6 +406,7 @@ function postComment(postId, content) {
             });
         },
         error: function (xhr, status, error) {
+            console.log(xhr.responseText);
             toastr.error("Failed to add comment. Please try again.");
         },
     });
