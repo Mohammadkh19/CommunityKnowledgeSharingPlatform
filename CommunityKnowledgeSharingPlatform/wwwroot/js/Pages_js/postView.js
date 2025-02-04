@@ -236,7 +236,7 @@ function populatePostDetails(postData) {
         <div id="comment-${comment.commentId}" class="post-comment d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center w-100">
                 <img src="${comment.profilePicturePath || './assets/avatars/default.jpg'}" alt="" class="profile-photo-sm">
-                <a href="#" class="profile-link mr-2">${comment.username}</a>
+                <a href="profile-view.html?username=${comment.username}" class="profile-link mr-2">${comment.username}</a>
                 <span class="comment-text"> ${comment.text}</span>
             </div>
 
@@ -388,7 +388,7 @@ function postComment(postId, content) {
                    <div class="d-flex align-items-center flex-grow-1">
                       <img src="${response.comment.profilePicturePath ? response.comment.profilePicturePath : './assets/avatars/default.jpg'}" alt="" class="profile-photo-sm">
 
-                      <a href="#" class="profile-link mr-2">${response.comment.username}</a>
+                      <a href="profile-view.html?username=${response.comment.username}" class="profile-link mr-2">${response.comment.username}</a>
                       <span class="comment-text"> ${response.comment.commentText}</span>
                    </div>
                    <div class="btn-group dropup">
