@@ -126,7 +126,7 @@ namespace CommunityKnowledgeSharingPlatform.Services
                     return (false, $"Comment with ID {commentId} not found");
                 }
 
-                if (comment.UserId != userId)
+                if (comment.UserId != userId && comment.Post.UserId != userId)
                 {
                     return (false, "You are not authorized to delete this comment");
                 }
