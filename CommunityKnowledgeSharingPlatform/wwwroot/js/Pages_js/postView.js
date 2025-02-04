@@ -239,21 +239,26 @@ function populatePostDetails(postData) {
                 <a href="#" class="profile-link mr-2">${comment.username}</a>
                 <span class="comment-text"> ${comment.text}</span>
             </div>
-        ${isCurrentUser
-                ? `
+
+            ${(isCurrentUser || isPostOwner) ? `
             <div class="btn-group dropleft ml-auto">
                 <button type="button" class="btn action-icon" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-ellipsis-v"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a class="dropdown-item" id="editCommentBtn" data-commentId="${comment.commentId}"><i class="fa fa-pencil"></i> Edit</a></li>
+                    ${isCurrentUser ? `
+                    <li><a class="dropdown-item" id="editCommentBtn" data-commentId="${comment.commentId}">
+                        <i class="fa fa-pencil"></i> Edit
+                    </a></li>
+                    ` : ''} <!-- Show edit only if the comment belongs to the current user -->
+                    
                     <li><a class="dropdown-item" id="deleteCommentBtn" data-toggle="modal" data-target="#delete_modal"
-                    data-commentId="${comment.commentId}"><i class="fa fa-trash"></i> Delete</a></li>
+                        data-commentId="${comment.commentId}">
+                        <i class="fa fa-trash"></i> Delete
+                    </a></li> <!-- Delete is always available if it's the post owner or the comment owner -->
                 </ul>
             </div>
-            `
-            : ''
-         }
+            ` : ''}
          </div>`;
         commentsContainer.append(commentHTML);
     });
@@ -475,7 +480,7 @@ function updateComment(commentId, updatedText) {
             commentElement.find(".comment-box").replaceWith(`
                 <span class="comment-text">${updatedText}</span>
             `);
-            toastr.success('Comment updated successfully!');
+            toastr.success('Comment saved successfully!');
         },
         error: function (xhr) {
             console.error("Failed to update comment:", xhr.responseJSON || xhr.responseText);
