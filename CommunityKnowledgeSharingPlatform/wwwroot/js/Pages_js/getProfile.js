@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     // api to show profile image in dashboard
-    const $avatar = $('.avatar-img');
+    const $avatar = $('.avatar-img-2');
     $.ajax({
         url: `api/Profile/GetProfile`,
         method: 'GET',
